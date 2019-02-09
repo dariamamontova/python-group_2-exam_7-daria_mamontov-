@@ -17,17 +17,35 @@ class App extends Component {
         ]
     }
 
+    addOrder = (id) => {
+        let orderId = this.state.dishes.findIndex(item => {
+            return item.id === id;
+        });
 
+        let order = {...this.state.dishes[orderId]};
+        order.amount += 1;
+        order.total = order.amount * order.price;
+
+        let dishes = [...this.state.dishes];
+        dishes[orderId] = order;
+
+        let state = {...this.state};
+        state.dishes = dishes;
+
+        this.setState(state);
+        console.log(this.state);
+};
 
     render() {
         return (
             <div className="App">
                 <DishForm>
-                    {this.state.dishes.map(item => <Dish name={item.name} price={item.price}
+                    {this.state.dishes.map((item) => <Dish key={item.id} name={item.name} price={item.price}
+                    onAdd={() => this.addOrder(item.id)}
                      />)}
                 </DishForm>
                 <OrderForm>
-                    {this.state.dishes.map(item => <OrderDish name={item.name} total={item.total} amount={item.amount}
+                    {this.state.dishes.map(item => <OrderDish key={item.id} name={item.name} total={item.total} amount={item.amount}
                      />)}
                 </OrderForm>
             </div>
