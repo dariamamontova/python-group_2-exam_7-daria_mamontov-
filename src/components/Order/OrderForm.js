@@ -1,13 +1,17 @@
 import React from 'react';
-import OrderDish from './OrderDish/OrderDish'
-import OrderTotal from './OrderTotal/OrderTotal'
 
 function OrderForm(props) {
-    return <div>
-
-        {props.children}
+    if (props.sum > 0) {
+        return <div>
+            {props.children}
         </div>
-}
+    };
 
+    if (props.sum <= 0) {
+        return <div>
+            <p>Order is empty! Please add some items.</p>
+        </div>
+    };
+}
 
 export default OrderForm;

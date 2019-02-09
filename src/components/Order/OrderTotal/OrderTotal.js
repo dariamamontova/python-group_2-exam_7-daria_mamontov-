@@ -1,7 +1,8 @@
 import React from 'react';
 
 function OrderTotal(props) {
-    return <p>Total {props.getSum()}</p>
+    let sum = props.getSum()
+    return <p>Total {sum}</p>
 }
 
 export default OrderTotal;

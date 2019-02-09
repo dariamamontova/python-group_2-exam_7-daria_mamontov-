@@ -75,12 +75,10 @@ class App extends Component {
                     onAdd={() => this.addOrder(item.id)}
                      />)}
                 </DishForm>
-                <OrderForm>
-                        <OrderTotal getSum={this.getTotal}/>
-
+                <OrderForm sum={this.getTotal()}>
+                    <OrderTotal getSum={this.getTotal}/>
                     {this.state.dishes.map(item => <OrderDish key={item.id} name={item.name}
                          total={item.total} amount={item.amount}
-
                          onRemove={() => this.removeOrder(item.id)}
                      />)}
                 </OrderForm>
