@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import DishForm from './components/Dish/DishForm'
-import Dish from "./components/Dish/Dish";
+import DishForm from './components/Dish/DishForm';
+import Dish from "./components/Dish/Dish/Dish";
+import OrderForm from './components/Order/OrderForm'
+import OrderDish from "./components/Order/OrderDish/OrderDish";
 
 
 class App extends Component {
@@ -24,7 +26,10 @@ class App extends Component {
                     {this.state.dishes.map(item => <Dish name={item.name} price={item.price}
                      />)}
                 </DishForm>
-
+                <OrderForm>
+                    {this.state.dishes.map(item => <OrderDish name={item.name} total={item.total} amount={item.amount}
+                     />)}
+                </OrderForm>
             </div>
         );
     }
