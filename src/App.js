@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import DishForm from './components/Dish/DishForm'
+import Dish from "./components/Dish/Dish";
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+    state = {
+        dishes: [
+            {id: 1, name: 'Hamburger', price: 80, amount: 0, total: 0},
+            {id: 2, name: 'Cheeseburger', price: 80, amount: 0, total: 0},
+            {id: 3, name: 'Cola', price: 80, amount: 0, total: 0},
+            {id: 4, name: 'Tea', price: 80, amount: 0, total: 0}
+        ]
+    }
+
+
+
+    render() {
+        return (
+            <div className="App">
+                <DishForm>
+                    {this.state.dishes.map(item => <Dish name={item.name} price={item.price}
+                     />)}
+                </DishForm>
+
+            </div>
+        );
+    }
 }
 
 export default App;
